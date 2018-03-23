@@ -1,0 +1,61 @@
+<div class="cont">
+	<div class="modal">
+		<h2 style="padding-bottom: 10px;margin-bottom: 0px;padding-left: 20px;padding-right: 15px;padding-top: 20px">Ajustes</h2>
+
+		<ion-list class="pane" style="padding-left: 5px;padding-right: 10px">
+
+		  <ion-item no-lines class="pane">
+		    <ion-label>Notificaciones</ion-label>
+		    <ion-toggle [(ngModel)]="notifications"></ion-toggle>
+		  </ion-item>
+
+		  <ion-item no-lines class="pane">
+		    <ion-label class="orange-text">Hora</ion-label>
+		    <ion-datetime [disabled]="!notifications" text-left displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="time"></ion-datetime>
+		  </ion-item>
+
+		  	
+
+		</ion-list>
+
+		<button ion-button clear class="orange-text" style="padding-left: 20px;font-size: 1.15em; margin-bottom:10px;margin-top:0px;text-transform: none;" [disabled]="!notifications">
+			Días
+		</button>
+
+		<div class="buttons" style="margin-bottom: 5px">
+			<button ion-button small [outline]="!dias[1]" style="font-size: 0.7em;border-radius: 5px;" (click)="toggle(1)" [disabled]="!notifications">
+			Lunes
+			</button>
+			<button ion-button small [outline]="!dias[2]" style="font-size: 0.7em;border-radius: 5px;" (click)="toggle(2)" [disabled]="!notifications">
+			Martes
+			</button>
+			<button ion-button small [outline]="!dias[3]" style="font-size: 0.7em;border-radius: 5px;" (click)="toggle(3)" [disabled]="!notifications">
+			Miercoles
+			</button>
+			<button ion-button small [outline]="!dias[4]" style="font-size: 0.7em;border-radius: 5px;" (click)="toggle(4)" [disabled]="!notifications">
+			Jueves
+			</button>
+		</div>
+
+		<div class="buttons" style="margin-bottom: 15px">
+			<button ion-button small [outline]="!dias[5]" style="font-size: 0.7em;border-radius: 5px;" (click)="toggle(5)" [disabled]="!notifications">
+			Viernes
+			</button>
+			<button ion-button small [outline]="!dias[6]" style="font-size: 0.7em;border-radius: 5px;" (click)="toggle(6)" [disabled]="!notifications">
+			Sabado
+			</button>
+			<button ion-button small [outline]="!dias[0]" style="font-size: 0.7em;border-radius: 5px;" (click)="toggle(0)" [disabled]="!notifications">
+			Domingo
+			</button>
+		</div>
+
+		<button clear ion-button round style="display:inline-block;padding: 20px;width:45%; margin-bottom: 10px;" (click)="dismiss()">
+		 	Cancelar
+		</button>
+
+		<button clear ion-button round style="display: inline-block;padding: 20px;width:45%; margin-bottom: 10px;right:-10px" (click)="save()">
+		 	Guardar
+		</button>
+
+	</div>
+</div>

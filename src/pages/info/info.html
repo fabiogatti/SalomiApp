@@ -1,0 +1,54 @@
+<ion-content class="modalInfo">
+		<h2 style="padding-bottom: 10px;margin-bottom: 0px;padding-left: 20px;padding-right: 15px;padding-top: 20px;margin-top: 0px">Información de pedido</h2>
+
+		<!--<p style="padding: 10px;margin-top: 0px;padding-left: 20px;padding-right: 15px;"><span style="color:#ff9800;font-size: 1.05em">Dirección:</span> {{ item.Dir }}</p>
+
+		<p style="padding: 10px;margin-top: 0px;margin-bottom: 15px;padding-left: 20px;padding-right: 15px;"><span style="color:#ff9800;font-size: 1.05em">Dirección Alterna:</span> {{ item.DirAlterna == "" ? "Ninguna":item.DirAlterna }}</p>-->
+		
+		<p class="text"><span style="color:#ff9800;font-size: 1.1em">Hora de creación</span></p>
+		<p class="text2"> {{ item.TiempoC }}</p>
+
+		<p class="text"><span style="color:#ff9800;font-size: 1.1em">Hora de entrega</span></p>
+		<p class="text2"> {{ item.fecha }}</p>
+
+		<p class="text" ><span style="color:#ff9800;font-size: 1.1em">Dirección de entrega</span></p>
+		<p class="text2" style="margin-bottom: 20px"> {{ item.DirAlterna == "" ? item.Dir:item.DirAlterna }}</p>
+
+
+		<div style="display:flex;justify-content: center;align-items: center;padding-left: 10px;padding-right: 10px;color:#ff9800;font-size: 0.9em">
+			<p class="orange-text" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">Producto</p>
+			<p class="orange-text" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">Paquetes</p>
+			<p class="orange-text" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">Unidades</p>
+			<p class="orange-text" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">Precio</p>
+		</div>
+
+		<ion-option *ngFor="let item2 of productos" >
+	      <div style="display:flex;justify-content: center;align-items: center;padding-left: 10px;padding-right: 10px;font-size: 0.9em">
+	  	    <p class="product" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">
+		      {{item2.nombre}}
+		    </p>
+		    <p class="product" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">
+		      {{item2.cantidad}}
+		    </p>
+		    <p class="product" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">
+		      {{item2.unidades}}
+		    </p>
+		    <p class="product" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">
+		      {{visualizarPrecio(item2.precio)}}
+		    </p>
+	      </div>
+	    </ion-option>
+
+	    <div style="display:flex;justify-content: center;align-items: center;padding-left: 10px;padding-right: 10px;color:#ff9800;font-size: 0.9em">
+			<p class="orange-text" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">Total</p>
+			<p class="orange-text" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">{{sumaCantidades()}}</p>
+			<p class="orange-text" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">{{sumaUnidades()}}</p>
+			<p class="orange-text" style="flex:1;text-align: center;padding-left: 5px;padding-right: 5px">{{visualizarPrecio(item["total"])}}</p>
+		</div>
+
+
+
+		<button clear ion-button round style="display: block;padding: 20px;left:25% !important;width: 50%;height:60px !important" (click)="dismiss()">
+			OK
+		</button>
+</ion-content>

@@ -1,0 +1,8 @@
+{
+  "name": "SalomiApp",
+  "app_id": "a2b04037",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

@@ -1,0 +1,166 @@
+<!--
+  Generated template for the ListadoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar color="primary">
+  <div style="display: flex;align-items: center;justify-content: center;">
+  	<ion-buttons position="left" style="flex: 0;order: 1">
+      <button ion-button icon-only title="Cerrar sesion" style="transform: rotate(180deg)" (click)="logOut()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title style="flex: 12;order: 2;">Listado de pedidos</ion-title>
+    <ion-buttons position="right" style="flex: 1;order: 3;">
+      <button ion-button icon-only title="Ajustes" (click)="settingsModal()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons style="flex: 1;order: 4;">
+      <button ion-button icon-only title="Ayuda" (click)="helpModal()">
+        <ion-icon name="help-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding class="pane">
+<div (swipe)="swipeEvent($event)" style="height: 100%; width: 100%">
+  <ion-list style="margin-bottom: 0px">
+  	<ion-item class="pane" style="padding-left: 0px;padding-right: 0px">
+  	  <ion-label class="orange-text">Filtrar por</ion-label>
+	  <ion-select [(ngModel)]="selectedFiltro" (ionChange)="checkFiltro()">
+		<ion-option *ngFor="let item of selectFiltro" value="{{item.value}}">{{item.text}}</ion-option>
+	  </ion-select>
+  	</ion-item>
+
+  	<ion-item class="pane" *ngIf="selectedFiltro==1">
+  	  <ion-label class="orange-text">Opción de filtrado</ion-label>
+	  <ion-select [(ngModel)]="selectedFiltroF" (ionChange)="clicked()">
+		<ion-option *ngFor="let item of selectFiltroF" value="{{item.value}}">{{item.text}}</ion-option>
+	  </ion-select>
+  	</ion-item>
+  	<ion-item class="pane" *ngIf="selectedFiltroF==0 && selectedFiltro==1">
+  	  <ion-label class="orange-text">Fecha</ion-label>
+  	  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="filtroOpt1" (ionChange)="clicked()"></ion-datetime>
+  	</ion-item>
+  	<ion-item class="pane" *ngIf="selectedFiltroF==1 && selectedFiltro==1">
+  	  <ion-label class="orange-text">Fecha inicial</ion-label>
+  	  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="filtroOpt2" (ionChange)="clicked()"></ion-datetime>
+  	</ion-item>
+  	 <ion-item class="pane" *ngIf="selectedFiltroF==1 && selectedFiltro==1">
+  	  <ion-label class="orange-text">Fecha final</ion-label>
+  	  <ion-datetime displayFormat="DD-MM-YYYY" pickerFormat="DD MMMM YYYY" [(ngModel)]="filtroOpt3" (ionChange)="clicked()"></ion-datetime>
+  	</ion-item>
+
+  	<ion-item class="pane" *ngIf="selectedFiltro==2">
+  	  <ion-label class="orange-text">Opción de filtrado</ion-label>
+	  <ion-select [(ngModel)]="selectedFiltroP" (change)="clicked()">
+		<ion-option *ngFor="let item of selectFiltroP" value="{{item.value}}">{{item.text}}</ion-option>
+	  </ion-select>
+  	</ion-item>
+  	<ion-item class="pane" *ngIf="selectedFiltro==2">
+  	  <ion-label class="orange-text">Introducir valor</ion-label>
+	  <ion-input class="right" type="number" pattern="[0-9]{0,}" [(ngModel)]="filtroOpt4"></ion-input>
+  	</ion-item>
+
+  	<ion-item class="pane" *ngIf="selectedFiltro!=0">
+  	  <button small center ion-button round (click)="resetFiltro(false)" *ngIf="isFiltered" style="float: left;display: inline-block;padding: 15px !important">
+        <ion-icon name="close" style="padding-right: 5px"></ion-icon>
+	      Remover filtro
+	    </button>
+  	  <button small center ion-button round (click)="realizarFiltro()" style="float: right;display: inline-block;padding: 15px !important">
+	      <ion-icon name="list-box" style="padding-right: 5px"></ion-icon>
+	      Filtrar
+	    </button>
+  	</ion-item>
+
+  	<!--<ion-item class="pane" *ngIf="isFiltered">
+  	 <button small center ion-button round (click)="resetFiltro(false)" style="float: left;display: inline-block;">
+	  <ion-icon name="close" style="padding-right: 5px"></ion-icon>
+	    Remover filtro
+	  </button>
+  	</ion-item>-->
+
+
+  	<!--<ion-item class="pane">
+  	  <ion-label class="orange-text">Ordenar por</ion-label>
+	  <ion-select [(ngModel)]="selectedOrdenar">
+		<ion-option *ngFor="let item of selectOrdenar" value="{{item.value}}">{{item.text}}</ion-option>
+	  </ion-select>
+  	</ion-item>-->
+
+  	<ion-item class="pane" style="padding-left: 0px;padding-right: 0px">
+  	<div style="display:flex">
+  	  <p class="orange-text" style="flex:1;text-align: center;font-size: 1.1em" (click)="toggleFechaSort()">
+  	    <b>
+  		  Fecha
+  		  <ion-icon name="arrow-dropdown" *ngIf="fechaSort==1"></ion-icon>
+   		  <ion-icon name="arrow-dropup" *ngIf="fechaSort==2"></ion-icon>
+  		</b>
+	  </p>
+  	  <p class="orange-text" style="flex:1;text-align: center;font-size: 1.1em" (click)="toggleTotalSort()">
+  	  	<b>
+  		  Total
+  		  <ion-icon name="arrow-dropdown" *ngIf="totalSort==1"></ion-icon>
+   		  <ion-icon name="arrow-dropup" *ngIf="totalSort==2"></ion-icon>
+  		</b>
+  	  </p>
+    </div>
+    </ion-item>
+
+    <ion-list style="margin-bottom: 0px">
+  	  <ion-option *ngFor="let item of listaPedidosV" value="{{item.value}}">
+  	  <!--<ion-item class="pane">-->
+  	    <div style="display:flex;justify-content: center;align-items: center;margin-top: 5px;margin-bottom: 5px" (click)="toggleHiddenList(item.value)" (press)="infoModal(item)">
+  	      <p class="orange-text" style="flex:1;text-align: center">
+	        <b>{{item.fecha}}</b>
+	      </p>
+	      <p class="orange-text" style="flex:1;text-align: center">
+	        <b>{{visualizarPrecio(item.total)}}</b>
+	      </p>
+	      <button class="pane" style="position: absolute;right: 10px;font-size: 1.1em" >
+		  	<ion-icon [name]="hiddenList[item.value] ? 'arrow-dropdown' : 'arrow-dropleft'" color="primary"></ion-icon>
+		  </button>
+	    </div>
+      <div class="border" style="border-color: #ff9800;" [hidden]="(hiddenList[item.value])"></div>
+	    <div [hidden]="!(hiddenList[item.value])" style="display:flex">
+		  <p class="orange-text" style="flex:1;text-align: center;font-size: 1.1em;margin-top: 0px">Producto</p>
+		  <p class="orange-text" style="flex:1;text-align: center;font-size: 1.1em;margin-top: 0px">Paquetes</p>
+		  <p class="orange-text" style="flex:1;text-align: center;font-size: 1.1em;margin-top: 0px">Unidades</p>
+		  <p class="orange-text" style="flex:1;text-align: center;font-size: 1.1em;margin-top: 0px">Precio</p>
+		</div>
+    <div class="border" style="border-color: #ff9800;" [hidden]="!(hiddenList[item.value])">
+	    <ion-option [hidden]="!(hiddenList[item.value])" *ngFor="let item2 of listaSoloPedidos[item.value]">
+	      <div style="display:flex;justify-content: center;align-items: center;margin-bottom: 10px" (click)="clicked()">
+	  	    <p style="flex:1;text-align: center;margin-top: 0px;margin-bottom: 0px">
+		      {{item2.nombre}}
+		    </p>
+		    <p style="flex:1;text-align: center;margin-top: 0px;margin-bottom: 0px">
+		      {{item2.cantidad}}
+		    </p>
+		    <p style="flex:1;text-align: center;margin-top: 0px;margin-bottom: 0px">
+		      {{item2.unidades}}
+		    </p>
+		    <p style="flex:1;text-align: center;margin-top: 0px;margin-bottom: 0px">
+		      {{visualizarPrecio(item2.precio)}}
+		    </p>
+	      </div>
+	    </ion-option>
+    </div>
+	  <!--</ion-item>-->
+  	  </ion-option>
+  	</ion-list>
+
+  	<ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="listaPedidosVC.length>contadorPedidos">
+   		<ion-infinite-scroll-content loadingText="Cargando pedidos"></ion-infinite-scroll-content>
+ 	</ion-infinite-scroll>
+
+
+  </ion-list>
+</div>
+</ion-content>

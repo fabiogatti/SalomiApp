@@ -1,0 +1,103 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.pane {
+    background-color: #fff3e0 !important;
+}
+.orange-text{
+	color:#ff9800 !important;
+}
+.right{
+	text-align: right !important;
+}
+
+input{
+	text-align:right !important;
+}
+
+.center{
+	text-align: center !important;
+}
+
+/*.popover{
+	background-color:rgba(25,25,25,0.2);
+	color: white;
+}
+
+.popover-content{
+	background-color: #fff3e0 !important;
+	color:#ff9800 !important;
+}*/
+
+.popover{
+	background-color:rgba(25,25,25,0.05);
+}
+
+.popover-content{
+	background-color: rgba(25,25,25,0.8) !important;
+	color:#fff3e0 !important;
+	width: 70% !important;
+}
+
+.scroll-content{
+	padding-bottom: 0px !important;
+}
+
+.item-cover{
+	margin-right: 10px !important;
+}
+
+h2{
+	color: #FF9800;
+}
+
+.toastedHome{
+	position: fixed;
+	top:56px;
+	text-align: center;
+	//background-color: rgba(25,25,25,0.05) !important;
+	//color:#FF9800;
+}
+
+.toasted{
+	position: fixed;
+	//top:56px;
+	top:112px;
+	text-align: center;
+	//background-color: rgba(25,25,25,0.05) !important;
+	//color:#FF9800;
+}
+
+
+.toast-wrapper{
+	background-color: rgba(25,25,25,0.8) !important;
+	//background-color:rgba(255, 152, 0,0.6) !important;
+	border-radius: 20px;
+	//color:#FF9800;
+}
+
+/*.toast-md{
+	top:90%;
+}*/
+
+.show-page{
+	background-color: rgba(25,25,25,0.1);
+}
+
+.lista{
+	transition: opacity 500ms ease-in-out 1s;
+}

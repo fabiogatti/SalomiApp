@@ -1,0 +1,58 @@
+
+<!--<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title text-center>
+      Congelados salomia
+    </ion-title>
+  </ion-toolbar>
+</ion-header>-->
+<ion-header>
+  <ion-toolbar color="primary">
+    
+    <ion-buttons  end>
+      <button ion-button icon-only title="Ayuda" (click)="helpModal()">
+        <ion-icon name="help-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center style="padding-left: 28px">Congelados SalomiApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="pane">
+  	<ion-list>
+  		<img center src="assets/img/logo4.png">
+		<ion-item class="pane" style="padding-left: 16px;padding-right: 16px;">
+	    	<ion-label floating class="orange-text">Nombre de usuario</ion-label>
+	    	<ion-input type="text" maxlength="20" (ionChange)="checkDisabled()" [(ngModel)]="user" text-left pattern="([A-Za-z]+)([0-9_-]{0,})"></ion-input>
+	  	</ion-item>
+
+	  	<ion-item class="pane" style="padding-left: 16px;padding-right: 16px;">
+	    	<ion-label floating class="orange-text">Contraseña</ion-label>
+	    	<ion-input style="text-transform: none" type="{{ togglePass ? 'text' : 'password' }}" maxlength="20" (ionChange)="checkDisabled()" [(ngModel)]="pass" text-left pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,}"></ion-input>
+	  	</ion-item>
+
+	  	<ion-item class="pane">
+    		<ion-label style="font-size: 0.8em" class="orange-text">Mostrar contraseña</ion-label>
+    		<ion-checkbox [(ngModel)]="togglePass" style="margin-right: 5px"></ion-checkbox>
+  		</ion-item>
+
+	</ion-list>
+	<div style="text-align: center;" large>
+		<button  ion-button round [disabled]="disabledLogin" (click)='login();'>
+		  <ion-icon name="person" style="padding-right: 5px"></ion-icon>
+		  Iniciar sesión
+		</button>
+	</div>
+	<div style="text-align: center; padding-top: 10px" large>
+		<button clear ion-button round (click)='registerModal();'>
+		  <ion-icon name="person-add" style="padding-right: 5px"></ion-icon>
+		  Registrate
+		</button>
+	</div>
+	<!--<div style="text-align: center;" large>
+		<button  ion-button round (click)='httpGet()'>
+		  <ion-icon name="egg" style="padding-right: 5px"></ion-icon>
+		  Clickeame papu
+		</button>
+	</div>-->
+</ion-content>

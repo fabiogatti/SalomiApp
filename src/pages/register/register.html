@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Registro
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="pane" >
+<!--<span ion-fixed style="height: 100%; width: 100%">-->
+  <ion-list inset>
+    <ion-label class="orange-text" style="font-size: 1.5em;margin-top: 0px;margin-bottom: 0px">Información de cuenta</ion-label>
+    <ion-item class="pane">
+      <ion-label floating class="orange-text">Usuario</ion-label>
+      <ion-input type="text" maxlength="12" [(ngModel)]="userInfo.user" (ionChange)="errorList('user')" text-left required pattern="([A-Za-z]+)([0-9_-]{0,})"></ion-input>
+    </ion-item>
+    <ion-option *ngIf="fieldError.user">
+      <p style="color:red;margin:0px">Nombre de usuario inválido</p>
+    </ion-option>
+    <ion-option *ngIf="fieldTaken.user">
+      <p style="color:red;margin:0px">El nombre de usuario ya ha sido registrado</p>
+    </ion-option>
+    <ion-item class="pane">
+      <ion-label floating class="orange-text">Contraseña</ion-label>
+      <ion-input type="{{ togglePass ? 'text' : 'password' }}" maxlength="20" [(ngModel)]="userInfo.pass" (ionChange)="errorList('pass')" text-left required pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,}"></ion-input>
+    </ion-item>
+    <ion-option *ngIf="fieldError.pass">
+      <p style="color:red;margin:0px">Contraseña inválida</p>
+    </ion-option>
+    <ion-item no-lines class="pane" style="padding: 0px">
+        <ion-label style="font-size: 0.8em" class="orange-text">Mostrar contraseña</ion-label>
+        <ion-checkbox [(ngModel)]="togglePass" style="margin-right: 5px"></ion-checkbox>
+    </ion-item>
+    <ion-label class="orange-text" style="font-size: 1.5em;margin-top: 25px;margin-bottom: 0px">Información personal</ion-label>
+    <ion-item class="pane">
+      <ion-label floating class="orange-text">Nombre</ion-label>
+      <ion-input type="text" maxlength="50" [(ngModel)]="userInfo.name" (ionChange)="errorList('name')" text-left required pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ ]{1,}"></ion-input>
+    </ion-item>
+    <ion-option *ngIf="fieldError.name">
+      <p style="color:red;margin:0px">Nombre inválido</p>
+    </ion-option>
+    <ion-item class="pane">
+      <ion-label floating class="orange-text">Email</ion-label>
+      <ion-input type="email" maxlength="75" [(ngModel)]="userInfo.email" (ionChange)="errorList('email')" text-left required pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"></ion-input>
+    </ion-item>
+    <ion-option *ngIf="fieldError.email">
+      <p style="color:red;margin:0px">Email inválido</p>
+    </ion-option>
+    <ion-option *ngIf="fieldTaken.email">
+      <p style="color:red;margin:0px">El email ya ha sido registrado</p>
+    </ion-option>
+    <ion-item class="pane">
+      <ion-label floating class="orange-text">Número</ion-label>
+      <ion-input type="tel" maxlength="10" [(ngModel)]="userInfo.number" (ionChange)="errorList('number')" text-left required pattern="([0-9]{7}|[0-9]{10})"></ion-input>
+    </ion-item>
+    <ion-option *ngIf="fieldError.number">
+      <p style="color:red;margin:0px">Numero inválido</p>
+    </ion-option>
+    <ion-item class="pane">
+      <ion-label floating class="orange-text">Empresa</ion-label>
+      <ion-input type="text" maxlength="75" [(ngModel)]="userInfo.empresa" (ionChange)="errorList('empresa')" text-left required pattern="[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]{1,}"></ion-input>
+    </ion-item>
+    <ion-option *ngIf="fieldError.empresa">
+      <p style="color:red;margin:0px">Empresa inválida</p>
+    </ion-option>
+    <ion-item class="pane">
+      <ion-label floating class="orange-text">Dirección</ion-label>
+      <ion-input type="text" maxlength="75" [(ngModel)]="userInfo.direccion" (ionChange)="errorList('direccion')" text-left required pattern="[A-Za-z0-9-_#,.ñÑáéíóúÁÉÍÓÚ ]{1,}"></ion-input>
+    </ion-item>
+    <ion-option *ngIf="fieldError.direccion">
+      <p style="color:red;margin:0px">Dirección inválida</p>
+    </ion-option>
+    <div style="text-align: center; padding-top: 10px;display: flex" large>
+      <button ion-button [disabled]="toggleRegister" full (click)="register()" style="flex:8">
+        <ion-icon name="person-add" style="padding-right: 5px"></ion-icon>
+        Registrame!
+      </button>
+      <button ion-button icon-only (click)='createPopover($event)' class="pane" clear style="flex:1">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </div>
+      <!--<ion-item>
+        <ion-avatar item-start>
+          <img src="{{character.image}}">
+        </ion-avatar>
+        <h2>{{character.name}}</h2>
+        <p>{{character.quote}}</p>
+      </ion-item>
+
+      <ion-item *ngFor="let item of character['items']">
+        {{item.title}}
+        <ion-note item-end>
+          {{item.note}}
+        </ion-note>
+      </ion-item>-->
+  </ion-list>
+  <!--</span>-->
+</ion-content>

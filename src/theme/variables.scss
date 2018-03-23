@@ -1,0 +1,118 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:			#ff9800,
+  primary-light:	#ffa726,
+  secondary:		#32db64,
+  danger:			#FF5858,
+  light:			#f4f4f4,
+  dark:				#222,
+  primary-lighter:  #ffa21a
+);
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+
+
+$checkbox-ios-icon-border-color-off :#FF9800;
+$checkbox-md-icon-border-color-off :#FF9800;
+$checkbox-wp-icon-border-color-off :#FF9800;
+
+$checkbox-ios-icon-border-radius:5px;
+$checkbox-md-icon-border-radius:5px;
+$checkbox-wp-icon-border-radius:5px;
+
+$alert-ios-background-color:#FFF3E0;
+$alert-md-background-color:#FFF3E0;
+$alert-wp-background-color:#FFF3E0;
+$alert-ios-message-text-color:black;
+$alert-md-message-text-color:black;
+$alert-wp-message-text-color:black;
+$alert-ios-border-radius:20px;
+$alert-md-border-radius:20px;
+$alert-wp-border-radius:20px;
+//$alert-md-input-text-color:#FF9800;
+
+$popover-ios-border-radius:5px;
+$popover-md-border-radius:5px;
+$popover-wp-border-radius:5px;
+
+$loading-ios-border-radius:10px;
+$loading-md-border-radius:10px;
+$loading-wp-border-radius:10px;
